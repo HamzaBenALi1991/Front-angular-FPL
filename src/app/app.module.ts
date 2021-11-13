@@ -16,6 +16,7 @@ import { InitalComponent } from './surveys/home-page/inital/inital.component';
 import { HttpService } from './services/http.service';
 import { AuthService } from './services/auth.service';
 import { SingleSurveyComponent } from './surveys/home-page/single-survey/single-survey.component';
+import { AuthGuardGuard } from './auth.guard';
 
 
 
@@ -47,7 +48,7 @@ import { SingleSurveyComponent } from './surveys/home-page/single-survey/single-
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
 
-  }, HttpService,AuthService
+  }, HttpService,AuthService, AuthGuardGuard
   ],
   bootstrap: [AppComponent]
 })
