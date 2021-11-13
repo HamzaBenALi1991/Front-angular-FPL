@@ -43,13 +43,11 @@ export class SingleSurveyComponent implements OnInit, OnDestroy {
       this.dated = this.dated[8] + this.dated[9] 
                       
       if (this.date == this.dated && this.user.status > 4) {
-        console.log('hello');
           this.ban = true
       } 
       if (this.dated !=this.date) {
         let body =  {status : 0 }
         this.http.updateUSer(this.user,body).subscribe(res=>{
-          console.log(res);
           
         },err =>{
           console.log(err);

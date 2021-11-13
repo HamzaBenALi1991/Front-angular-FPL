@@ -1,3 +1,7 @@
 .test::-webkit-scrollbar {
     display: none;
   }
+a:hover {
+  background-color: rgba(43, 70, 226, 0.418);
+  color: white;
+}

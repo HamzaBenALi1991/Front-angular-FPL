@@ -11,6 +11,7 @@
     </button>
     <hr />
     <div class="row justify-content-center" style="margin-top: 100px;">
+      <h2  style="color: white;text-align: center;" >Surveys List </h2>
       <div class="col-10">
 
     <div class="list-group test" style="max-height: 450px;overflow: scroll;">
@@ -22,7 +23,7 @@
         aria-current="true"
       >
         <div class="d-flex w-100 justify-content-between">
-          <h2 class="mb-1">{{ item.titre }}</h2>
+          <h4 class="mb-1">Topic : {{ item.titre }}</h4>
         </div>
         <p style="display: inline;float: right;" class="mb-1">Created by {{ item.user.username }}</p>
         <small> {{ item.description }}</small>

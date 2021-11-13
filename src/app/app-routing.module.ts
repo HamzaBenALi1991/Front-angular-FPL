@@ -16,7 +16,6 @@ const routes: Routes = [
       { path: '', component: InitalComponent },
       { path: 'newSurvey', component: AddsurveyComponent },
       { path: 'survey/:id', component: SingleSurveyComponent },
-
     ]
   },
 

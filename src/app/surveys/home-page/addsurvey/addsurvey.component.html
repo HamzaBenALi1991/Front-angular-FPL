@@ -1,4 +1,4 @@
-<div class="row justify-content-center" style="margin-top: 100px">
+<div class="row justify-content-center" style="margin-top: 220px">
   <div class="col-11">
     <div class="card bg-light p-2">
       <form [formGroup]="SurveyForm" (ngSubmit)="onSubmit()">
@@ -23,7 +23,7 @@
         </div>
         <hr>
 
-        <button style="width: 100%;" class="btn btn-success" type="submit">Submit Survey</button>
+        <button [disabled]='!this.SurveyForm.valid' style="width: 100%;" class="btn btn-success" type="submit">Submit Survey</button>
       </form>
     </div>
   </div>
