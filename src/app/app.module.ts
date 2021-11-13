@@ -3,16 +3,52 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { YourInterceptor } from './services/your-interceptor.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HomePageComponent } from './surveys/home-page/home-page.component';
+import { AddsurveyComponent } from './surveys/home-page/addsurvey/addsurvey.component';
+import { InitalComponent } from './surveys/home-page/inital/inital.component';
+import { HttpService } from './services/http.service';
+import { AuthService } from './services/auth.service';
+import { SingleSurveyComponent } from './surveys/home-page/single-survey/single-survey.component';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    RegistrationComponent,
+    LoginComponent,
+    HomePageComponent,
+    AddsurveyComponent,
+    InitalComponent,
+    SingleSurveyComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+  
+    
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: YourInterceptor,
+    multi: true
+  }, {
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy,
+
+  }, HttpService,AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

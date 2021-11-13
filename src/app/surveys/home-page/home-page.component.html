@@ -1,0 +1,37 @@
+<app-header></app-header>
+<div class="row justify-content-center">
+  <div class="col-8" >
+    <button
+      [routerLink]="['/HomePage/newSurvey']"
+      routerLinkActive="router-link-active"
+      style="width: 100%"
+      class="btn btn-outline-light m-2"
+    >
+      Add a survey
+    </button>
+    <hr />
+    <div class="row justify-content-center" style="margin-top: 100px;">
+      <div class="col-10">
+
+    <div class="list-group test" style="max-height: 450px;overflow: scroll;">
+      <a
+        [routerLink]="['survey/'+item._id]" routerLinkActive="router-link-active" 
+        *ngFor="let item of surveys"
+        style="cursor: pointer"
+        class="list-group-item list-group-item-action"
+        aria-current="true"
+      >
+        <div class="d-flex w-100 justify-content-between">
+          <h2 class="mb-1">{{ item.titre }}</h2>
+        </div>
+        <p style="display: inline;float: right;" class="mb-1">Created by {{ item.user.username }}</p>
+        <small> {{ item.description }}</small>
+      </a>
+    </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>

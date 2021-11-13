@@ -1,0 +1,39 @@
+
+/*all about the background image in the body*/
+
+.surreding {
+    z-index: 1000;
+    min-height: 57vh;
+    background-color: rgba(235, 235, 235, 0.959);
+    border-radius: 20px;
+    margin-top: 12%;
+    width: 100vh;
+  }
+  .welcome {
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    font-stretch: expanded;
+    padding-top: 15px;
+
+  }
+  .marge{
+    margin-top: 120px;
+  }
+    /* this is for input display valid or invalid  */
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+input.ng-valid.ng-touched {
+  border: 1px solid rgba(66, 241, 66, 0.822);
+}
+.errormessage{
+  color: red;
+}
+.thisiswrong {
+  color :red ; 
+  display: none ;
+}
+.show{
+    display: block;
+}

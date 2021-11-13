@@ -1,0 +1,30 @@
+<div class="row justify-content-center" style="margin-top: 100px">
+  <div class="col-11">
+    <div class="card bg-light p-2">
+      <form [formGroup]="SurveyForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="titre">Title : </label>
+          <input
+            type="text"
+            id="titre"
+            class="form-control"
+            formControlName="titre"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description : </label>
+          <textarea
+            name="description"
+            id="description"
+            class="form-control"
+            rows="4"
+            formControlName="description"
+          ></textarea>
+        </div>
+        <hr>
+
+        <button style="width: 100%;" class="btn btn-success" type="submit">Submit Survey</button>
+      </form>
+    </div>
+  </div>
+</div>

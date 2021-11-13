@@ -1,0 +1,242 @@
+<div class="row justify-content-center">
+  <div class="col"></div>
+  <div class="col-11 col-sm-10 col-lg-9 col-xl-7 surreding">
+    <div class="welcome">WELCOME</div>
+    <hr />
+    <div class="row justify-content-center marge">
+      <div class="col-8">
+        <form [formGroup]="SignUpForm" (ngSubmit)="onsubmit()">
+          <!-- username-->
+          <div class="form-group">
+            <label for="inlineFormInputGroup">Username : </label>
+            <br />
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="24"
+                    fill="currentColor"
+                    class="bi bi-person-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <input
+                style="min-width: 85%"
+                formControlName="username"
+                type="text"
+                class="form-control"
+                id="inlineFormInputGroup"
+                placeholder="Username"
+              />
+              <small
+                class="errormessage"
+                *ngIf="
+                  !this.SignUpForm.get('username').valid &&
+                  this.SignUpForm.get('username').touched
+                "
+              >
+                <span
+                  *ngIf="
+                    this.SignUpForm.get('username').errors['required'] &&
+                    this.SignUpForm.get('username').touched
+                  "
+                >
+                  This feild is required .
+                </span>
+                <span
+                  *ngIf="
+                    this.SignUpForm.get('username').errors['pattern'] &&
+                    this.SignUpForm.get('username').touched
+                  "
+                >
+                  username with spaces at first are not Allowed . and should
+                  have 2 to 20 characters
+                </span>
+              </small>
+            </div>
+          </div>
+          <!--email -->
+          <div class="form-group">
+            <label for="email">email : </label>
+            <br />
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+              </div>
+              <input
+                style="min-width: 85%"
+                formControlName="email"
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Email Adress"
+                autocomplete="off"
+              />
+              <small
+                class="errormessage"
+                *ngIf="
+                  !this.SignUpForm.get('email').valid &&
+                  this.SignUpForm.get('email').touched
+                "
+              >
+                <span
+                  *ngIf="
+                    this.SignUpForm.get('email').errors['required'] &&
+                    this.SignUpForm.get('email').touched
+                  "
+                >
+                  This feild is required .
+                </span>
+                <span
+                  *ngIf="
+                    this.SignUpForm.get('email').errors['pattern'] &&
+                    this.SignUpForm.get('email').touched
+                  "
+                >
+                  This Email adresse format is incorrect .
+                </span>
+              </small>
+            </div>
+            <!-- in case email already exist -->
+            <span class="thisiswrong">This email already exist . </span>
+          </div>
+          <!--Password-->
+          <div class="form-group">
+            <label for="Password">Password : </label>
+            <br />
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="24"
+                    fill="currentColor"
+                    class="bi bi-key-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <input
+                style="min-width: 85%"
+                formControlName="password"
+                type="password"
+                class="form-control"
+                id="Password"
+                placeholder="Password"
+              />
+              <small
+                class="errormessage"
+                *ngIf="
+                  !this.SignUpForm.get('password').valid &&
+                  this.SignUpForm.get('password').touched
+                "
+              >
+                <span
+                  *ngIf="
+                    this.SignUpForm.get('password').errors['required'] &&
+                    this.SignUpForm.get('password').touched
+                  "
+                >
+                  This feild is required
+                </span>
+                <span
+                  *ngIf="
+                    this.SignUpForm.get('password').errors['minlength'] &&
+                    this.SignUpForm.get('password').touched
+                  "
+                >
+                  The password must have at least 6 character.
+                </span>
+              </small>
+            </div>
+          </div>
+          <!-- repeat password -->
+          <div class="form-group">
+            <label for="Password2"> Repeat Password : </label>
+            <br />
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="24"
+                    fill="currentColor"
+                    class="bi bi-key-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <input
+                style="min-width: 85%"
+                formControlName="password2"
+                type="password"
+                class="form-control"
+                id="Password2"
+                placeholder="Repeat your password ."
+              />
+
+              <small
+                style="display: block"
+                class="errormessage"
+                *ngIf="
+                  !this.SignUpForm.get('password2').valid &&
+                  this.SignUpForm.get('password2').touched
+                "
+              >
+                <span
+                  *ngIf="
+                    this.SignUpForm.get('password2').errors['required'] &&
+                    this.SignUpForm.get('password2').touched
+                  "
+                >
+                  This feild is required .
+                </span>
+                <span
+                  *ngIf="
+                    this.SignUpForm.get('password2').errors['NoMatch'] &&
+                    this.SignUpForm.get('password2').touched &&
+                    this.SignUpForm.controls.password2.value !== null
+                  "
+                >
+                  The password does not match .
+                </span>
+              </small>
+            </div>
+          </div>
+
+          <button
+            [disabled]="!status"
+            style="width: 100%"
+            type="submit"
+            class="btn btn-success"
+          >
+            Submit Registration
+          </button>
+          <small>
+            Already has an account ?
+            <a [routerLink]="['/login']"> click here </a>
+          </small>
+        </form>
+        <hr>
+      </div>
+    </div>
+  </div>
+  <div class="col"></div>
+</div>

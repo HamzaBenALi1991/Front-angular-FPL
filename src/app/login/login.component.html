@@ -1,0 +1,94 @@
+<div class="row justify-content-center">
+  <div class="col"></div>
+  <div class="col-11 col-sm-10 col-lg-9 col-xl-7 surreding">
+    <div class="welcome">WELCOME</div>
+    <hr />
+    <div class="row justify-content-center marge">
+      <div class="col-8">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <!-- email -->
+          <div class="form-group">
+            <label for="email">Email : </label>
+            <br />
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                id="email"
+                placeholder="Email"
+                formControlName="email"
+                style="min-width: 85%"
+              />
+              <small
+                class="errormessage"
+                *ngIf="
+                  !this.loginForm.get('email').valid &&
+                  this.loginForm.get('email').touched
+                "
+              >
+                This feild is required .
+              </small>
+            </div>
+          </div>
+          <!-- password-->
+          <div class="form-group">
+            <label for="Password">Password : </label>
+            <br />
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="24"
+                    fill="currentColor"
+                    class="bi bi-key-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <input
+                type="password"
+                class="form-control"
+                id="Password"
+                placeholder="Password"
+                formControlName="password"
+                style="min-width: 85%"
+              />
+              <small
+                class="errormessage"
+                *ngIf="
+                  !this.loginForm.get('password').valid &&
+                  this.loginForm.get('password').touched
+                "
+              >
+                This feild is required .
+              </small>
+            </div>
+          </div>
+          <div class="thisiswrong" > Please make sure email and password are correct.</div>
+          <button
+            [disabled]="!this.loginForm.valid"
+            type="submit"
+            class="btn btn-success mt-2"
+            style="width: 100%"
+          >
+            Login
+          </button>
+          <small>
+            Don't have  an account ? 
+            <a [routerLink]="['/registration']"> Register Here </a>
+          </small>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col"></div>
+</div>
