@@ -23,6 +23,8 @@ export class SingleSurveyComponent implements OnInit, OnDestroy {
   ban: boolean = false
   date = new Date().getDate()
   dated !: Date | any
+  voted = "no"
+  votedStatus = false
   constructor(private router: ActivatedRoute, private http: HttpService, private route: Router) { }
 
   ngOnInit(): void {
@@ -38,27 +40,30 @@ export class SingleSurveyComponent implements OnInit, OnDestroy {
       console.log(err);
 
     }, () => {
-      
+
       this.dated = this.user.updatedAt
-      this.dated = this.dated[8] + this.dated[9] 
-                      
+      this.dated = this.dated[8] + this.dated[9]
+
       if (this.date == this.dated && this.user.status > 4) {
-          this.ban = true
-      } 
-      if (this.dated !=this.date) {
-        let body =  {status : 0 }
-        this.http.updateUSer(this.user,body).subscribe(res=>{
-          
-        },err =>{
-          console.log(err);
-          
-        })
+        this.ban = true
       }
+      if (this.dated != this.date) {
+        let body = { status: 0 }
+        this.http.updateUSer(this.user, body).subscribe(res => {
+
+        }, err => {
+          console.log(err);
+
+        })
+
+      }
+
 
 
     })
     this.subcription = this.router.params.subscribe((params: Params) => {
       this.surveyId = params['id'];
+
       this.http.getOneSurveys(this.surveyId).subscribe(res => {
         this.yes = 0
         this.no = 0
@@ -67,6 +72,17 @@ export class SingleSurveyComponent implements OnInit, OnDestroy {
         console.log(err);
 
       }, () => {
+        this.votedStatus = false
+
+        for (let i = 0; i < this.survey.votes.length; i++) {
+          if (this.userid == this.survey.votes[i].user) {
+            this.votedStatus = true;
+            this.voted = this.survey.votes[i].vote
+            break
+          }
+        }
+
+
         this.votes = this.survey.votes.length
         for (let i = 0; i < this.votes; i++) {
           if (this.survey.votes[i].vote == 'yes') {
@@ -77,11 +93,16 @@ export class SingleSurveyComponent implements OnInit, OnDestroy {
 
         }
 
+
       })
     }, err => {
       console.log(err);
 
     })
+
+
+
+
 
   }
 

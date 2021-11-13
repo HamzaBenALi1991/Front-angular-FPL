@@ -6,15 +6,21 @@
       <h6>description :</h6>
       <br />
       <p>{{ survey.description }}</p>
-      <h4 *ngIf="ban" style="color: blue;"> You voted 5 times Today Come back Tomorrow . </h4>
-      <div *ngIf="!ban" >
-        <button (click)="clickyes()" type="button" class="btn btn-success m-2">
-          Yes
-        </button>
-        <button (click)="clickno()" type="button" class="btn btn-danger m-2">
-          No
-        </button>
-      </div>
+      <h4 style="color: blue;" *ngIf="votedStatus" >
+        You already voted " {{voted}} " for this Survey
+      </h4>
+        <div *ngIf="!votedStatus">
+        
+          <h4 *ngIf="ban" style="color: blue;"> You voted 5 times Today Come back Tomorrow . </h4>
+          <div *ngIf="!ban" >
+            <button (click)="clickyes()" type="button" class="btn btn-success m-2">
+              Yes
+            </button>
+            <button (click)="clickno()" type="button" class="btn btn-danger m-2">
+              No
+            </button>
+          </div>
+        </div>
       <hr />
       <div  >
           <h5>Total of Votes : {{votes}}</h5>
